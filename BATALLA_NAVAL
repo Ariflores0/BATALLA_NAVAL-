@@ -1,1 +1,234 @@
 //BATALLA_NAVAL
+<html>
+  <head>
+
+  <style>
+   
+   .item{
+     float:left;
+   }
+  
+
+  </style>
+    <title>BATALLA NAVAL</title>
+
+    <form class="todo">
+
+
+    <div>
+      <div class="item" id="tabla">
+        <table>
+          <tbody>
+            <tr>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     </div>
+
+     <div class="item" id="posi">
+       <select id="lugares" name="posicionamiento">
+         
+       </selec>
+       
+     </div>
+
+
+    </form>
+  </head>
+  <body>
+
+  <script type="text/javascript">
+
+         var tablero =[
+                     ['  ',' 1','2 ','3 ','4 ','5 ','6 ','7'],
+                     ['A|','🌊','🌊','🌊','🌊','🌊','🌊','🌊'],
+                     ['B|','🌊','🌊','🌊','🌊','🌊','🌊','🌊'],
+                     ['C|','🌊','🌊','🌊','🌊','🌊','🌊','🌊'],
+                     ['D|','🌊','🌊','🌊','🌊','🌊','🌊','🌊'],
+                     ['E|','🌊','🌊','🌊','🌊','🌊','🌊','🌊'],
+                     ['F|','🌊','🌊','🌊','🌊','🌊','🌊','🌊'], ]
+ 
+
+       function tablero_jugador (){
+         var codigoHTML="<h3>Tablero del jugador</h3><table><tbody>";
+         for(var i=0; i<tablero.length; i++){
+           codigoHTML+="<tr>";
+           for(var j=0; j<tablero[i].length; j++){
+             codigoHTML+="<td>"+tablero[i][j]+" </td>";
+           }
+            codigoHTML+="</tr>"
+         }
+         codigoHTML+="<input  type='text' value='5 barcos' disabled  ></tbody></table>";
+         document.getElementById("tabla"). innerHTML = codigoHTML;
+         }
+
+
+
+         function posicionar_jugador (){
+         var codigoHTML="<br><br><br><br><label><b>Seleccione un lugar</b></label><select id='lugares'>";
+         for(var i=1; i<tablero.length; i++){
+           for(var j=1; j<tablero[i].length; j++){
+             if(tablero[i][j]=='🌊'){
+               if(i<2 && j<8){
+                 var l='A';
+                 codigoHTML+="<option> "+l+","+j+"</option>";
+               }else if(i>1 && i<3 && j<8){
+                 var l='B';
+                 codigoHTML+="<option> "+l+","+j+"</option>";
+                }else if(i>2 && i<4 && j<8){
+                  var l='C';
+                  codigoHTML+="<option> "+l+","+j+"</option>";
+                 }else if(i>3 && i<5 && j<8){
+                   var l='D';
+                   codigoHTML+="<option> "+l+","+j+"</option>";
+                  }else if(i>4 && i<6 && j<8){
+                     var l='E';
+                     codigoHTML+="<option> "+l+","+j+"</option>";
+                   }else if(i>5 && i<7 && j<8){
+                      var l='F';
+                      codigoHTML+="<option> "+l+","+j+"</option>";
+                    }
+             }
+ 
+           }
+         }
+         codigoHTML+="</select><br><input type='button' class='botonn'  value='Ocupar' onclick='btn()'>"
+         document.getElementById("posi"). innerHTML = codigoHTML;           
+         }
+
+
+         function btn(){
+           for(var i=0; i<5; i++){
+               if(i<5){
+                ocupar_p1();
+                console.log(i)
+
+               }
+            }
+         }
+         function ocupar_p1(){
+           var r=document.getElementById("lugares").value;
+           //alert(r)
+
+             for(var i=0; i<tablero.length; i++){
+               for(var j=0; j<tablero[i].length; j++){
+                 if(tablero[i][j]=='🌊'){
+                   if(r=='A,1'){
+                     tablero[1][1]='🚢';
+                   }else if(r=='A,2'){
+                     tablero[1][2]='🚢'; 
+                    }else if(r=='A,3'){
+                      tablero[1][3]='🚢'; 
+                     }else if(r=='A,4'){
+                       tablero[1][4]='🚢'; 
+                      }else if(r=='A,5'){
+                        tablero[1][5]='🚢'; 
+                       }else if(r=='A,6'){
+                         tablero[1][6]='🚢'; 
+                        }else if(r=='A,7'){
+                          tablero[1][7]='🚢'; 
+                         }else if(r=='B,1'){
+                           tablero[2][1]='🚢'; 
+                          }else if(r=='B,2'){
+                            tablero[2][2]='🚢'; 
+                           }else if(r=='B,3'){
+                             tablero[2][3]='🚢'; 
+                            }else if(r=='B,4'){
+                              tablero[2][4]='🚢'; 
+                             }else if(r=='B,5'){
+                               tablero[2][5]='🚢'; 
+                              }else if(r=='B,6'){
+                                tablero[2][6]='🚢'; 
+                               }else if(r=='B,7'){
+                                 tablero[2][7]='🚢'; 
+                                }else if(r=='C,1'){
+                                  tablero[3][1]='🚢'; 
+                                 }else if(r=='C,2'){
+                                   tablero[3][2]='🚢'; 
+                                  }else if(r=='C,3'){
+                                    tablero[3][3]='🚢'; 
+                                   }else if(r=='C,4'){
+                                     tablero[3][4]='🚢'; 
+                                    }else if(r=='C,5'){
+                                      tablero[3][5]='🚢'; 
+                                     }else if(r=='C,6'){
+                                       tablero[3][6]='🚢'; 
+                                      }else if(r=='C,7'){
+                                        tablero[3][7]='🚢'; 
+                                       }else if(r=='D,1'){
+                                         tablero[4][1]='🚢'; 
+                                        }else if(r=='D,2'){
+                                          tablero[4][2]='🚢'; 
+                                         }else if(r=='D,3'){
+                                           tablero[4][3]='🚢'; 
+                                          }else if(r=='D,4'){
+                                            tablero[4][4]='🚢'; 
+                                           }else if(r=='D,5'){
+                                             tablero[4][5]='🚢'; 
+                                            }else if(r=='D,6'){
+                                              tablero[4][6]='🚢'; 
+                                             }else if(r=='D,7'){
+                                               tablero[4][7]='🚢'; 
+                                              }else if(r=='E,1'){
+                                                tablero[5][1]='🚢'; 
+                                               }else if(r=='E,2'){
+                                                 tablero[5][2]='🚢'; 
+                                                }else if(r=='E,3'){
+                                                  tablero[5][3]='🚢'; 
+                                                 }else if(r=='E,4'){
+                                                   tablero[5][4]='🚢'; 
+                                                  }else if(r=='E,5'){
+                                                    tablero[5][5]='🚢'; 
+                                                   }else if(r=='E,6'){
+                                                     tablero[5][6]='🚢'; 
+                                                    }else if(r=='E,7'){
+                                                      tablero[5][7]='🚢'; 
+                                                     }else if(r=='F,1'){
+                                                       tablero[6][1]='🚢'; 
+                                                      }else if(r=='F,2'){
+                                                        tablero[6][2]='🚢'; 
+                                                       }else if(r=='F,3'){
+                                                         tablero[6][3]='🚢'; 
+                                                        }else if(r=='F,4'){
+                                                          tablero[6][4]='🚢'; 
+                                                         }else if(r=='F,5'){
+                                                           tablero[6][5]='🚢'; 
+                                                          }else if(r=='F,6'){
+                                                            tablero[6][6]='🚢'; 
+                                                           }else if(r=='F,7'){
+                                                             tablero[6][7]='🚢'; 
+                                                            }
+
+
+
+
+
+                 }
+               }
+
+             }
+
+           //tablero[1][1]='🚢'
+
+
+           tablero_jugador()
+           posicionar_jugador()
+
+         }
+
+
+
+
+tablero_jugador()
+posicionar_jugador()
+
+
+
+     
+  </script>
+
+
+  </body>
+</html> 
